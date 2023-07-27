@@ -14,7 +14,16 @@ interface InputProps {
   errors: FieldErrors;
 }
 
-const Input: React.FC<InputProps> = ({ id, label, type, disabled, formatPrice, required, register, errors }) => {
+const Input: React.FC<InputProps> = ({
+  id,
+  label,
+  type,
+  disabled,
+  formatPrice,
+  required,
+  register,
+  errors,
+}) => {
   return (
     <div className="w-full relative">
       {formatPrice && (

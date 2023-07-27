@@ -36,7 +36,10 @@ export async function POST(request: Request, { params }: { params: IParams }) {
   return NextResponse.json(user);
 }
 
-export async function DELETE(request: Request, { params }: { params: IParams }) {
+export async function DELETE(
+  request: Request,
+  { params }: { params: IParams },
+) {
   const currentUser = await getCurrentUser();
 
   if (!currentUser) {

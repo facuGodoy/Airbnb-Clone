@@ -64,7 +64,7 @@ const RentModal = () => {
       dynamic(() => import("../Map"), {
         ssr: false,
       }),
-    [location]
+    [location],
   );
 
   const setCustomValue = (id: string, value: any) => {
@@ -125,7 +125,10 @@ const RentModal = () => {
 
   let bodyContent = (
     <div className="flex flex-col gap-8">
-      <Heading title="Which of these best description your place?" subtitle="Pick a category" />
+      <Heading
+        title="Which of these best description your place?"
+        subtitle="Pick a category"
+      />
       <div
         className="
         grid
@@ -153,8 +156,14 @@ const RentModal = () => {
   if (step === STEPS.LOCATION) {
     bodyContent = (
       <div className="flex flex-col gap-8">
-        <Heading title="Where is your place located?" subtitle="Help guests find you!" />
-        <CountrySelect value={location} onChange={(value) => setCustomValue("location", value)} />
+        <Heading
+          title="Where is your place located?"
+          subtitle="Help guests find you!"
+        />
+        <CountrySelect
+          value={location}
+          onChange={(value) => setCustomValue("location", value)}
+        />
         <Map center={location?.latlng} />
       </div>
     );
@@ -163,7 +172,10 @@ const RentModal = () => {
   if (step === STEPS.INFO) {
     bodyContent = (
       <div className="flex flex-col gap-8">
-        <Heading title="Share some basics about your place" subtitle="What amenities do you have?" />
+        <Heading
+          title="Share some basics about your place"
+          subtitle="What amenities do you have?"
+        />
         <Counter
           title="Guests"
           subtitle="How many guests do you allow?"
@@ -191,8 +203,14 @@ const RentModal = () => {
   if (step === STEPS.IMAGES) {
     bodyContent = (
       <div className="flex flex-col gap-8">
-        <Heading title="Add a photo of your place" subtitle="Show guests what your place looks like!" />
-        <ImageUpload value={imageSrc} onChange={(value) => setCustomValue("imageSrc", value)} />
+        <Heading
+          title="Add a photo of your place"
+          subtitle="Show guests what your place looks like!"
+        />
+        <ImageUpload
+          value={imageSrc}
+          onChange={(value) => setCustomValue("imageSrc", value)}
+        />
       </div>
     );
   }
@@ -200,10 +218,27 @@ const RentModal = () => {
   if (step === STEPS.DESCRIPTION) {
     bodyContent = (
       <div className="flex flex-col gap-8">
-        <Heading title="How would you describe your place?" subtitle="Short and sweet works best!" />
-        <Input id="title" label="Title" disabled={isLoading} register={register} errors={errors} required />
+        <Heading
+          title="How would you describe your place?"
+          subtitle="Short and sweet works best!"
+        />
+        <Input
+          id="title"
+          label="Title"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
         <hr />
-        <Input id="description" label="Description" disabled={isLoading} register={register} errors={errors} required />
+        <Input
+          id="description"
+          label="Description"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
       </div>
     );
   }
@@ -211,8 +246,20 @@ const RentModal = () => {
   if (step === STEPS.PRICE) {
     bodyContent = (
       <div className="flex flex-col gap-8">
-        <Heading title="Now, set your price" subtitle="How much do you charge per night?" />
-        <Input id="price" label="Price" formatPrice type="number" disabled={isLoading} register={register} errors={errors} required />
+        <Heading
+          title="Now, set your price"
+          subtitle="How much do you charge per night?"
+        />
+        <Input
+          id="price"
+          label="Price"
+          formatPrice
+          type="number"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
       </div>
     );
   }

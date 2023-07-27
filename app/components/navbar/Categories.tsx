@@ -5,7 +5,16 @@ import Container from "../Container";
 import { IoDiamond } from "react-icons/io5";
 import { TbBeach, TbMountain, TbPool } from "react-icons/tb";
 import { BsSnow } from "react-icons/bs";
-import { GiBarn, GiBoatFishing, GiCactus, GiCastle, GiCaveEntrance, GiForestCamp, GiIsland, GiWindmill } from "react-icons/gi";
+import {
+  GiBarn,
+  GiBoatFishing,
+  GiCactus,
+  GiCastle,
+  GiCaveEntrance,
+  GiForestCamp,
+  GiIsland,
+  GiWindmill,
+} from "react-icons/gi";
 import { MdOutlineVilla } from "react-icons/md";
 import { FaSkiing } from "react-icons/fa";
 import CategoryBox from "../CategoryBox";
@@ -113,7 +122,12 @@ const Categories = () => {
       "
       >
         {categories.map((item) => (
-          <CategoryBox key={item.label} label={item.label} selected={category === item.label} icon={item.icon} />
+          <CategoryBox
+            key={item.label}
+            label={item.label}
+            selected={category === item.label}
+            icon={item.icon}
+          />
         ))}
       </div>
     </Container>

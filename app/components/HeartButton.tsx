@@ -9,14 +9,20 @@ interface HeartButtonProps {
   currentUser?: SafeUser | null;
 }
 
-const HeartButton: React.FC<HeartButtonProps> = ({ listingId, currentUser }) => {
+const HeartButton: React.FC<HeartButtonProps> = ({
+  listingId,
+  currentUser,
+}) => {
   const { hasFavorite, toggleFavorite } = useFavorite({
     listingId,
     currentUser,
   });
 
   return (
-    <div onClick={toggleFavorite} className="relative hover:opacity-80 transition cursor-pointer">
+    <div
+      onClick={toggleFavorite}
+      className="relative hover:opacity-80 transition cursor-pointer"
+    >
       <AiOutlineHeart
         size={28}
         className="
@@ -26,7 +32,10 @@ const HeartButton: React.FC<HeartButtonProps> = ({ listingId, currentUser }) => 
         -right-[2px]
         "
       />
-      <AiFillHeart size={24} className={hasFavorite ? "fill-rose-500" : "fill-neutral-500/70"} />
+      <AiFillHeart
+        size={24}
+        className={hasFavorite ? "fill-rose-500" : "fill-neutral-500/70"}
+      />
     </div>
   );
 };

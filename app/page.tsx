@@ -1,4 +1,3 @@
-import { data } from "autoprefixer";
 import getListings from "./actions/getListings";
 import ClientOnly from "./components/ClientOnly";
 import Container from "./components/Container";
@@ -34,8 +33,14 @@ export default async function Home() {
         gap-8
         "
         >
-          {listings.map((listings: any) => {
-            return <ListingCard currentUser={currentUser} key={listings.id} data={listings} />;
+          {listings.map((listing) => {
+            return (
+              <ListingCard
+                currentUser={currentUser}
+                key={listing.id}
+                data={listing}
+              />
+            );
           })}
         </div>
       </Container>

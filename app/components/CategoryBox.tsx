@@ -11,7 +11,11 @@ interface CategoryBoxProps {
   selected?: boolean;
 }
 
-const CategoryBox: React.FC<CategoryBoxProps> = ({ icon: Icon, label, selected }) => {
+const CategoryBox: React.FC<CategoryBoxProps> = ({
+  icon: Icon,
+  label,
+  selected,
+}) => {
   const router = useRouter();
   const params = useSearchParams();
 
@@ -36,7 +40,7 @@ const CategoryBox: React.FC<CategoryBoxProps> = ({ icon: Icon, label, selected }
         url: "/",
         query: updatedQuery,
       },
-      { skipNull: true }
+      { skipNull: true },
     );
 
     router.push(url);
