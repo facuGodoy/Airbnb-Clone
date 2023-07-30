@@ -3,8 +3,7 @@
 import { Range } from "react-date-range";
 import { differenceInCalendarDays, eachDayOfInterval } from "date-fns";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { Reservation } from "@prisma/client";
-import { SafeListing, SafeUser } from "@/app/types";
+import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import { categories } from "@/app/components/navbar/Categories";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
@@ -24,7 +23,7 @@ const initialDateRange = {
 }
 
 interface ListingClientProps {
-  reservations?: Reservation[];
+  reservations?: SafeReservation[];
   listing: SafeListing & {
     user: SafeUser;
   };
@@ -74,8 +73,7 @@ const ListingClient: React.FC<ListingClientProps> = ({
       .then(() => {
         toast.success('Listing reserved!');
         setDateRange(initialDateRange);
-        // Redirect to /trips
-        router.refresh()
+        router.push('/trips')
       })
       .catch(() => {
       toast.error('Something went wrong')
@@ -83,7 +81,14 @@ const ListingClient: React.FC<ListingClientProps> = ({
       .finally(() => {
         setIsLoading(false)
       })
-  }, [totalPrice, dateRange, listing?.id, router, currentUser, loginModal])
+  }, [
+    totalPrice,
+    dateRange,
+    listing?.id,
+    router,
+    currentUser,
+    loginModal
+  ])
   
   useEffect(() => {
     if (dateRange.startDate && dateRange.endDate) {
